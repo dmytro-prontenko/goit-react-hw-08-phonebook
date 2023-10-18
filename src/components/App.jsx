@@ -6,12 +6,16 @@ import {
   changeFilter,
   contactAdd,
   contactDelete,
-  fetchContacts
+  fetchContacts,
 } from 'redux/phoneBookReducer';
 import { getContacts, getFilter } from 'redux/selectors';
 import ContactsList from './ContactsList/ContactsList';
 import Filter from './Filter/Filter';
 import Form from './Form/Form';
+import { Link, Route, Routes } from 'react-router-dom';
+import Navbar from './Navbar/Navbar';
+import Login from 'pages/Login/Login';
+import Register from 'pages/Register/Register';
 
 const App = () => {
   const contacts = useSelector(getContacts);
@@ -19,7 +23,9 @@ const App = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(()=>{dispatch(fetchContacts())},[dispatch])
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const handleChangeInput = e => {
     dispatch(changeFilter(e.target.value));
@@ -53,23 +59,34 @@ const App = () => {
   const filteredData = filteredContacts();
 
   return (
-    <div className="wrapper">
-      <h1>Phonebook</h1>
-      <Form addContact={handleAddContact} />
-      {contacts.length ? (
-        <>
-          <h2>Contacts</h2>
-          <Filter onFilterChange={handleChangeInput} filterValue={filter} />
-          <ContactsList
-            contacts={filteredData}
-            filterValue={filter}
-            deleteContact={handleDeleteContact}
-          />
-        </>
-      ) : (
-        'There are no contacts'
-      )}
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<h1>HOME</h1>}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/contacts" element={<h1>contact list</h1>}></Route>
+      </Routes>
+
+      {/* <div className="wrapper">
+      {/* <div className="wrapper">
+        <h1>Phonebook</h1>
+        <Form addContact={handleAddContact} />
+        {contacts.length ? (
+          <>
+            <h2>Contacts</h2>
+            <Filter onFilterChange={handleChangeInput} filterValue={filter} />
+            <ContactsList
+              contacts={filteredData}
+              filterValue={filter}
+              deleteContact={handleDeleteContact}
+            />
+          </>
+        ) : (
+          'There are no contacts'
+        )}
+      </div> */}
+    </>
   );
 };
 
