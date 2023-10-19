@@ -1,27 +1,25 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { MdPersonRemove } from 'react-icons/md';
 import {
-  deleteContactThunk,
-  getContactsThunk,
-} from 'redux/contacts/operations';
+  StyledBtnDelete,
+  StyledContactLi,
+  StyledSpan,
+} from './ContactList.styled';
+import { StyledTitle, StyledContact } from '../../styles/App.styled';
 import {
   selectContacts,
   selectError,
   selectFilter,
   selectLoading,
 } from 'redux/contacts/selectors';
-import remove from '../../images/remove-svgrepo-com.svg';
-import { StyledTitle } from '../../styles/App.styled';
-import { Loader } from '../Loader/Loader';
 import {
-  StyledBtnDelete,
-  StyledContactLi,
-  StyledContacts,
-  StyledContactsList,
-  StyledSpan
-} from './ContactsList.styled';
+  deleteContactThunk,
+  getContactsThunk,
+} from 'redux/contacts/operations';
+import { Loader } from '../Loader/Loader';
+import { useEffect } from 'react';
 
-const ContactsList = () => {
+export const ContactsList = () => {
   const contacts = useSelector(selectContacts);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
@@ -40,9 +38,9 @@ const ContactsList = () => {
 
   const filteredData = filterContacts();
   return (
-    <StyledContacts>
-      <StyledTitle>Your contacts</StyledTitle>
-      {contacts.length ? <StyledContactsList>
+    <StyledContact>
+      <StyledTitle>Contacts</StyledTitle>
+      <ul>
         {loading && <Loader />}
         {error && <h3>Something went wrong</h3>}
         {filteredData.map(contact => (
@@ -53,12 +51,11 @@ const ContactsList = () => {
             <StyledBtnDelete
               onClick={() => dispatch(deleteContactThunk(contact.id))}
             >
-              <img src={remove} alt='remove'/>
+              <MdPersonRemove />
             </StyledBtnDelete>
           </StyledContactLi>
         ))}
-      </StyledContactsList> : <p>There are no contacts</p>}
-    </StyledContacts>
+      </ul>
+    </StyledContact>
   );
 };
-export default ContactsList

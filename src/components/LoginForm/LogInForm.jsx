@@ -1,17 +1,36 @@
-import { StyledError } from 'components/RegisterForm/RegisterForm';
-import React from 'react';
+
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { loginThunk } from 'redux/auth/operations';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { StyledButton, StyledError, StyledForm, StyledInput, StyledLink } from './LoginForm.styled';
 
 const LoginForm = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = data => console.log(data);
-  console.log('errors', errors);
+  const onSubmit = data => {
+    dispatch(loginThunk(data))
+      .unwrap()
+      .then(res => {
+        toast.success(`Welcome, ${res.user.name}!`);
+
+        navigate(location.state?.from ?? '/');
+      })
+      .catch(() => toast.error('Something went wrong! Try again!'));
+  };
+  if (isLoggedIn) {
+    return <Navigate to="/contacts" />;
+  }
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
@@ -19,9 +38,9 @@ const LoginForm = () => {
         type="email"
         placeholder="Email"
         {...register('email', {
-          required: {value: true, message: "This field is required"},
-          minLength: {value: 6, message: "Minimum 6 characters" },
-          maxLength: { value: 20, message: "Maximum 20 characters" },
+          required: { value: true, message: 'This field is required' },
+          minLength: { value: 6, message: 'Minimum 10 characters' },
+          maxLength: { value: 20, message: 'Maximum 20 characters' },
           pattern: /^\S+@\S+$/i,
         })}
       />
@@ -29,13 +48,15 @@ const LoginForm = () => {
       <StyledInput
         type="password"
         placeholder="Password"
-        {...register('Password', {
+        {...register('password', {
           required: true,
-          minLength: 6,
+          minLength: 10,
           maxLength: 16,
         })}
       />
-      {errors.password && <StyledError>This field is required. Length 6-16 symbols</StyledError>}
+      {errors.password && (
+        <StyledError>This field is required. Length 6-16 symbols</StyledError>
+      )}
       <p>
         Don't have an account? <StyledLink>Sign up here</StyledLink>
       </p>
@@ -46,46 +67,3 @@ const LoginForm = () => {
 
 export default LoginForm;
 
-export const StyledForm = styled.form`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 20px;
-  justify-items: center;
-
-  width: 30vw;
-  margin: 30px auto;
-  padding: 25px;
-
-  border-radius: 30px 0 30px 0;
-  background-color: #023047;
-  color: #ffb703;
-`;
-
-export const StyledInput = styled.input`
-  width: 80%;
-  border: none;
-  border-bottom: 1px solid #ffb703;
-  background-color: transparent;
-  color: #ffb703;
-
-  &:focus {
-    outline: 0 transparent solid;
-  }
-`;
-
-export const StyledButton = styled.button`
-  background-color: #ffb703;
-  color: #023047;
-  border: none;
-  border-radius: 6px;
-  width: 35%;
-  height: 40px;
-  /* padding: 15px; */
-  font-size: 1.2rem;
-`;
-
-export const StyledLink = styled(Link)`
-  color: #ffb703;
-`;
