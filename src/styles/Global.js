@@ -11,7 +11,7 @@ body {
   background-color: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.white};
     line-height: ${props => props.theme.lineHeights.body};
-    background-image:'../images/bgc.jpg'
+    
 
 }
 code {

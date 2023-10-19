@@ -3,29 +3,9 @@ import styled from 'styled-components';
 
 export const StyledContainer = styled.main`
   margin: 0 auto;
-  /* padding: 0 16px; */
 `;
 
 export const StyledHeader = styled.header`
-  /* display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  padding: 20px 76px;
-  top: 0;
-  left: 0;
-  position: sticky;
-  z-index: 1100;
-  font-size: ${props => props.theme.fontSizes.m};
-  text-align: center;
-  background: ${props => props.theme.colors.background};
-  box-shadow: ${props => props.theme.shadows.boxShadowHeader};
-  margin-left: -16px;
-  margin-right: -16px;
-  
-
-  > nav {
-    display: flex;
-  } */
 `;
 
 export const StyledNavBar = styled.nav`
