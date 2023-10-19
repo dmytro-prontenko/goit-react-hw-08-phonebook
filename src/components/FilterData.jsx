@@ -1,9 +1,7 @@
-import React from 'react';
-import { StyledDesc } from '../styles/App.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateFilter } from 'redux/contacts/contactsSlice';
 import { selectFilter } from 'redux/contacts/selectors';
-import { StyledContacts } from './ContactsList/ContactsList.styled';
+import { StyledDesc } from '../styles/App.styled';
 import { StyledFilter, StyledInput } from './Filter/Filter.styled';
 
 const FilterData = () => {
