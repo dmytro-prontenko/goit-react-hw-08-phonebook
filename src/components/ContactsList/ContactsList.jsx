@@ -42,7 +42,8 @@ const ContactsList = () => {
   return (
     <StyledContacts>
       <StyledTitle>Your contacts</StyledTitle>
-      {contacts.length ? <StyledContactsList>
+      {contacts.length 
+      ? <StyledContactsList>
         {loading && <Loader />}
         {error && <StyledTitle>Something went wrong</StyledTitle>}
         {filteredData.map(contact => (

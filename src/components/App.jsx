@@ -18,7 +18,9 @@ import { PrivateRoute } from './PrivateRoute';
 import ScrollToTop from 'react-scroll-up';
 import { StyledUpSpan } from './ContactsList/ContactsList.styled';
 import { Loader } from './Loader/Loader';
-import {ReactComponent as IconUp} from "../images/up-arrow-svgrepo-com.svg"
+import { ReactComponent as IconUp } from '../images/up-arrow-svgrepo-com.svg';
+import '../index.css';
+import { CSSTransition } from 'react-transition-group';
 
 const App = () => {
   const isRefresh = useSelector(selectIsRefresh);
@@ -26,6 +28,7 @@ const App = () => {
   useEffect(() => {
     dispatch(refreshThunk());
   }, [dispatch]);
+
 
   return isRefresh ? (
     <Loader />
@@ -56,14 +59,16 @@ const App = () => {
           alignItems: 'center',
           justifyContent: 'center',
           bottom: 35,
-          background:'#023047',
+          background: '#023047',
           width: '35px',
           height: '35px',
           padding: '8px',
           boxShadow: '0px 2px 4px -1px rgba(0, 0, 0, 0.2)',
         }}
       >
-        <StyledUpSpan><IconUp /></StyledUpSpan>
+        <StyledUpSpan>
+          <IconUp />
+        </StyledUpSpan>
       </ScrollToTop>
       <Global />
     </>

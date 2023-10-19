@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { loginThunk } from 'redux/auth/operations';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { StyledButton, StyledError, StyledForm, StyledInput, StyledLink } from './LoginForm.styled';
+import AnimatedPage from 'components/AnimatedPage';
 
 const LoginForm = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -33,6 +34,7 @@ const LoginForm = () => {
   }
 
   return (
+    <AnimatedPage>
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <StyledInput
         type="email"
@@ -62,6 +64,7 @@ const LoginForm = () => {
       </p>
       <StyledButton type="submit">Log in</StyledButton>
     </StyledForm>
+    </AnimatedPage>
   );
 };
 

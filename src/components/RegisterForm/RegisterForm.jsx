@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { registerThunk } from 'redux/auth/operations';
 import { StyledButton, StyledError, StyledForm, StyledInput, StyledLink } from './RegisterForm.styled';
+import AnimatedPage from 'components/AnimatedPage';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const RegisterForm = () => {
   } = useForm();
 
   return (
+    <AnimatedPage>
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <StyledInput
         type="text"
@@ -63,6 +65,7 @@ const RegisterForm = () => {
 
       <StyledButton type="submit">Register</StyledButton>
     </StyledForm>
+    </AnimatedPage>
   );
 };
 
