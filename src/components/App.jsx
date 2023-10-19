@@ -16,11 +16,10 @@ import { selectIsRefresh } from 'redux/auth/selectors';
 import { PrivateRoute } from './PrivateRoute';
 
 import ScrollToTop from 'react-scroll-up';
-import { StyledUpSpan } from './ContactsList/ContactsList.styled';
-import { Loader } from './Loader/Loader';
 import { ReactComponent as IconUp } from '../images/up-arrow-svgrepo-com.svg';
 import '../index.css';
-import { CSSTransition } from 'react-transition-group';
+import { StyledUpSpan } from './ContactsList/ContactsList.styled';
+import { Loader } from './Loader/Loader';
 
 const App = () => {
   const isRefresh = useSelector(selectIsRefresh);
