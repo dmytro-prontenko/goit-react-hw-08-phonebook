@@ -10,8 +10,8 @@ export const StyledForm = styled.form`
   justify-items: center;
 
   width: 25vw;
-  height: 40vh;
-  margin: 30px auto;
+  min-height: 40vh;
+  margin: 20px auto;
   padding: 15px;
 
   border-radius: 30px 0 30px 0;

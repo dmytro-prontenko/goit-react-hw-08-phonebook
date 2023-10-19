@@ -31,7 +31,7 @@ const RegisterForm = () => {
         placeholder="Name"
         {...register('name', {
           required: {value: true, message: "This field is required"},
-          minLength: { value: 4, message: `Name should contains min 6 characters` },
+          minLength: { value: 4, message: `Name should contains min 4 characters` },
         })}
       />
       {errors.name && <StyledError>{errors.name.message}</StyledError>}

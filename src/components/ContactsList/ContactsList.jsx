@@ -44,7 +44,7 @@ const ContactsList = () => {
       <StyledTitle>Your contacts</StyledTitle>
       {contacts.length ? <StyledContactsList>
         {loading && <Loader />}
-        {error && <h3>Something went wrong</h3>}
+        {error && <StyledTitle>Something went wrong</StyledTitle>}
         {filteredData.map(contact => (
           <StyledContactLi key={contact.id}>
             <StyledSpan>

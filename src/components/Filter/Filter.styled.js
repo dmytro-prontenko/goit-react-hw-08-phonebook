@@ -10,7 +10,7 @@ export const StyledFilter = styled.div`
 
   width: 30vw;
   height: 12vh;
-  margin: 30px auto;
+  margin: 20px auto;
   padding: 15px;
 
   border-radius: 30px 0 30px 0;

@@ -11,6 +11,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { addContactThunk } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
+import { toast } from 'react-toastify';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -20,10 +21,10 @@ export const ContactForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const findByName = contacts.find(contact => contact.name === name);
+    const findByName = contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase());
     if (!findByName) {
       dispatch(addContactThunk({ name, number }));
-    } else alert(`${findByName.name} is already in contacts`);
+    } else toast.error(`${findByName.name} is already in contacts`);
     setName('');
     setNumber('');
   };

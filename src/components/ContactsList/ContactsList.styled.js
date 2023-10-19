@@ -40,14 +40,14 @@ export const StyledUpSpan = styled.div`
 export const StyledContacts = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
   grid-column-gap: 0px;
   grid-row-gap: 10px;
   justify-items: center;
 
   width: 35vw;
-  height: auto;
-  margin: 30px auto;
+  /* height: auto; */
+  margin: 20px auto;
   padding: 35px;
 
   border-radius: 30px 0 30px 0;
