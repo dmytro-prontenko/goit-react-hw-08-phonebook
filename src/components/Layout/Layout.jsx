@@ -1,17 +1,13 @@
-import React from 'react';
+import UserMenu from 'components/UserMenu/UserMenu';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { Loader } from '../Loader/Loader';
 import {
   StyledContainer,
   StyledHeader,
-  StyledLogo,
-  StyledLink,
-  StyledNavLink,
   StyledNavBar,
+  StyledNavLink
 } from './Layout.styled';
-import { LiaPhoneSquareSolid } from 'react-icons/lia';
-import { Loader } from '../Loader/Loader';
-import UserMenu from 'components/UserMenu/UserMenu';
 // import { selectIsLoggedIn, selectUser } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
