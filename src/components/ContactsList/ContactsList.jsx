@@ -1,3 +1,4 @@
+import AnimatedPageRight from 'components/AnimatedPageRight';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -18,7 +19,7 @@ import {
   StyledContactLi,
   StyledContacts,
   StyledContactsList,
-  StyledSpan
+  StyledSpan,
 } from './ContactsList.styled';
 
 const ContactsList = () => {
@@ -40,26 +41,31 @@ const ContactsList = () => {
 
   const filteredData = filterContacts();
   return (
-    <StyledContacts>
-      <StyledTitle>Your contacts</StyledTitle>
-      {contacts.length 
-      ? <StyledContactsList>
-        {loading && <Loader />}
-        {error && <StyledTitle>Something went wrong</StyledTitle>}
-        {filteredData.map(contact => (
-          <StyledContactLi key={contact.id}>
-            <StyledSpan>
-              {contact.name}: <span>{contact.number}</span>
-            </StyledSpan>
-            <StyledBtnDelete
-              onClick={() => dispatch(deleteContactThunk(contact.id))}
-            >
-              <img src={remove} alt='remove'/>
-            </StyledBtnDelete>
-          </StyledContactLi>
-        ))}
-      </StyledContactsList> : <p>There are no contacts</p>}
-    </StyledContacts>
+    <AnimatedPageRight>
+      <StyledContacts>
+        <StyledTitle>Your contacts</StyledTitle>
+        {contacts.length ? (
+          <StyledContactsList>
+            {loading && <Loader />}
+            {error && <StyledTitle>Something went wrong</StyledTitle>}
+            {filteredData.map(contact => (
+              <StyledContactLi key={contact.id}>
+                <StyledSpan>
+                  {contact.name}: <span>{contact.number}</span>
+                </StyledSpan>
+                <StyledBtnDelete
+                  onClick={() => dispatch(deleteContactThunk(contact.id))}
+                >
+                  <img src={remove} alt="remove" />
+                </StyledBtnDelete>
+              </StyledContactLi>
+            ))}
+          </StyledContactsList>
+        ) : (
+          <p>There are no contacts</p>
+        )}
+      </StyledContacts>
+    </AnimatedPageRight>
   );
 };
-export default ContactsList
+export default ContactsList;

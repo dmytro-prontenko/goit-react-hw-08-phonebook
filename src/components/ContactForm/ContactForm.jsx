@@ -5,13 +5,14 @@ import {
   StyledContactTitle,
   StyledForm,
   StyledInput,
-  StyledWrapper
+  StyledWrapper,
 } from './ContactForm.styled';
 
+import AnimatedPageRight from 'components/AnimatedPageRight';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { addContactThunk } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
-import { toast } from 'react-toastify';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -21,7 +22,9 @@ export const ContactForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const findByName = contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase());
+    const findByName = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
     if (!findByName) {
       dispatch(addContactThunk({ name, number }));
     } else toast.error(`${findByName.name} is already in contacts`);
@@ -30,35 +33,37 @@ export const ContactForm = () => {
   };
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
-      <StyledContactTitle>Enter contact data</StyledContactTitle>
-      <StyledWrapper>
-        <StyledDesc>Name</StyledDesc>
-        <StyledInput
-          type="text"
-          name="name"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          value={name}
-          onChange={e => setName(e.target.value)}
-          placeholder="Name"
-        />
-      </StyledWrapper>
-      <StyledWrapper>
-        <StyledDesc>Phone number</StyledDesc>
-        <StyledInput
-          type="tel"
-          name="number"
-          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          required
-          value={number}
-          onChange={e => setNumber(e.target.value)}
-          placeholder="XXX-XXX-XXXX"
-        />
-      </StyledWrapper>
+    <AnimatedPageRight>
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledContactTitle>Enter contact data</StyledContactTitle>
+        <StyledWrapper>
+          <StyledDesc>Name</StyledDesc>
+          <StyledInput
+            type="text"
+            name="name"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+            value={name}
+            onChange={e => setName(e.target.value)}
+            placeholder="Name"
+          />
+        </StyledWrapper>
+        <StyledWrapper>
+          <StyledDesc>Phone number</StyledDesc>
+          <StyledInput
+            type="tel"
+            name="number"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            required
+            value={number}
+            onChange={e => setNumber(e.target.value)}
+            placeholder="XXX-XXX-XXXX"
+          />
+        </StyledWrapper>
 
-      <StyledButton type="submit">Add Contact</StyledButton>
-    </StyledForm>
+        <StyledButton type="submit">Add Contact</StyledButton>
+      </StyledForm>
+    </AnimatedPageRight>
   );
 };
 

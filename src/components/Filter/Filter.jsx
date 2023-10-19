@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledFilter, StyledInput } from './Filter.styled';
+import AnimatedPageLeft from 'components/AnimatedPageLeft';
 
 const Filter = ({ onFilterChange, filterValue }) => {
   return (
+    <AnimatedPageLeft>
     <StyledFilter>
       <label className="filter-label" htmlFor="contact-filter">
-        Find contact by name!
+        Find contact by name
         <StyledInput
           onChange={onFilterChange}
           name="filter"
@@ -15,6 +17,7 @@ const Filter = ({ onFilterChange, filterValue }) => {
         ></StyledInput>
       </label>
     </StyledFilter>
+    </AnimatedPageLeft>
   );
 };
 

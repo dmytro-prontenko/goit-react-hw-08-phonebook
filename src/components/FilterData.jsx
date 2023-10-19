@@ -3,13 +3,15 @@ import { updateFilter } from 'redux/contacts/contactsSlice';
 import { selectFilter } from 'redux/contacts/selectors';
 import { StyledDesc } from '../styles/App.styled';
 import { StyledFilter, StyledInput } from './Filter/Filter.styled';
+import AnimatedPageLeft from './AnimatedPageLeft';
 
 const FilterData = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
   return (
+    <AnimatedPageLeft>
     <StyledFilter>
-      <StyledDesc>Find contacts by name!!!</StyledDesc>
+      <StyledDesc>Find contacts by name</StyledDesc>
       <StyledInput
         type="text"
         name="search"
@@ -18,6 +20,7 @@ const FilterData = () => {
         placeholder="Search by name"
       />
     </StyledFilter>
+    </AnimatedPageLeft>
   );
 };
 export default FilterData;
