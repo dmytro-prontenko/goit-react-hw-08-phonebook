@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/goit-react-hw-08-phonebook/static/css/main.1233b0d0.css",
-    "main.js": "/goit-react-hw-08-phonebook/static/js/main.06ba1b21.js",
+    "main.js": "/goit-react-hw-08-phonebook/static/js/main.6cb70256.js",
     "static/media/logout-svgrepo-com.svg": "/goit-react-hw-08-phonebook/static/media/logout-svgrepo-com.1fe9b20497133ce2eff19f16e13cc9bc.svg",
     "index.html": "/goit-react-hw-08-phonebook/index.html",
     "static/media/up-arrow-svgrepo-com.svg": "/goit-react-hw-08-phonebook/static/media/up-arrow-svgrepo-com.1330902b45b58e327e3671e1236de5ac.svg",
     "static/media/user-circle-svgrepo-com.svg": "/goit-react-hw-08-phonebook/static/media/user-circle-svgrepo-com.0b19f33a96163e518bb179cf61a023f4.svg",
     "static/media/remove-svgrepo-com.svg": "/goit-react-hw-08-phonebook/static/media/remove-svgrepo-com.1232066c4e7a96407a1a2f64286e37dd.svg",
     "main.1233b0d0.css.map": "/goit-react-hw-08-phonebook/static/css/main.1233b0d0.css.map",
-    "main.06ba1b21.js.map": "/goit-react-hw-08-phonebook/static/js/main.06ba1b21.js.map"
+    "main.6cb70256.js.map": "/goit-react-hw-08-phonebook/static/js/main.6cb70256.js.map"
   },
   "entrypoints": [
     "static/css/main.1233b0d0.css",
-    "static/js/main.06ba1b21.js"
+    "static/js/main.6cb70256.js"
   ]
 }
